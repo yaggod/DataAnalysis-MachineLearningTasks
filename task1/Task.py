@@ -45,10 +45,10 @@ args = parser.parse_args()
 dataFrame = pandas.read_csv(args.file)
 showData(dataFrame)
 (x, y) = getXYValues(dataFrame, args.xRow, args.yRow)
-fig, (axis1, axis2, axis3) =  pyplot.subplots(3)
-
 functionApproximation = LinearFunction.FindApproximatedLinearFunction(x, y)
 
+
+fig, (axis1, axis2, axis3) =  pyplot.subplots(3)
 fillDots(axis1, x, y)
 fillDotsAndLine(axis2, x, y, functionApproximation)
 fillDotsAndLineAndErrorSquares(axis3, x, y, functionApproximation)
