@@ -9,7 +9,7 @@ class LinearFunction:
     def __call__(self, x):
         return self.k*x + self.b
     
-    def FindApproximatedLinearFunction(originalX : list, originalY : list):
+    def FindApproximatedLinearFunction(originalX : list, originalY : list) -> "LinearFunction":
         k = 0
         
         xSum = sum(originalX)
