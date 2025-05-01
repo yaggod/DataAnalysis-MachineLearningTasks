@@ -35,21 +35,24 @@ def fillDotsAndLineAndErrorSquares(axes : axes.Axes, xData, yData, function : Li
         axes.add_patch(rectanglePatch)
 
 
-parser = ArgumentParser()
-parser.add_argument("--file", type=str, default="Task1\\student_scores.csv", help="File to analyze")
-parser.add_argument("--xRow", type=str, default="Hours", help="X row on graph")
-parser.add_argument("--yRow", type=str, default="Scores", help="Y row on graph")
-args = parser.parse_args()
 
 
-dataFrame = pandas.read_csv(args.file)
-showData(dataFrame)
-(x, y) = getXYValues(dataFrame, args.xRow, args.yRow)
-functionApproximation = LinearFunction.FindApproximatedLinearFunction(x, y)
+if __name__ == "main":
+    parser = ArgumentParser()
+    parser.add_argument("--file", type=str, default="Task1\\student_scores.csv", help="File to analyze")
+    parser.add_argument("--xRow", type=str, default="Hours", help="X row on graph")
+    parser.add_argument("--yRow", type=str, default="Scores", help="Y row on graph")
+    args = parser.parse_args()
 
 
-fig, (axis1, axis2, axis3) =  pyplot.subplots(3)
-fillDots(axis1, x, y)
-fillDotsAndLine(axis2, x, y, functionApproximation)
-fillDotsAndLineAndErrorSquares(axis3, x, y, functionApproximation)
-pyplot.show()
+    dataFrame = pandas.read_csv(args.file)
+    showData(dataFrame)
+    (x, y) = getXYValues(dataFrame, args.xRow, args.yRow)
+    functionApproximation = LinearFunction.FindApproximatedLinearFunction(x, y)
+
+
+    fig, (axis1, axis2, axis3) =  pyplot.subplots(3)
+    fillDots(axis1, x, y)
+    fillDotsAndLine(axis2, x, y, functionApproximation)
+    fillDotsAndLineAndErrorSquares(axis3, x, y, functionApproximation)
+    pyplot.show()
